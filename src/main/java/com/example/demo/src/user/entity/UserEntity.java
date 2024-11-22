@@ -1,6 +1,7 @@
 package com.example.demo.src.user.entity;
 
 import com.example.demo.config.BaseEntity;
+import com.example.demo.src.user.dto.SignUpDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,6 +27,9 @@ public class UserEntity extends BaseEntity {
     @Column(nullable = false)
     private String password;
 
-
+    public UserEntity(SignUpDto signUpDto){
+        this.username = signUpDto.getUsername();
+        this.password = signUpDto.getPassword();
+    }
 
 }
