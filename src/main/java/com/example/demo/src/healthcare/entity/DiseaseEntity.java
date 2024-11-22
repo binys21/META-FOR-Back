@@ -24,15 +24,13 @@ public class DiseaseEntity extends BaseEntity {
     private String diseaseName;
 
     @Column(nullable = false)
-    private String description;
+    private String caustion;
 
     @Column(nullable = false)
-    private String symptomList;
-
-    @Column(nullable = false)
-    private String nearPharmacy ;
+    private String improvement;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "symptomId")
     private SymptomEntity symptomEntity;
+
 }
