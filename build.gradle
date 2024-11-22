@@ -34,6 +34,10 @@ dependencies {
 
 	//swaggerdoc 사용을 위한 springdoc-openapi 의존성 추가
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
+
+	//spring security
+	//implementation 'org.springframework.boot:spring-boot-starter-security'
+
 }
 
 tasks.named('test') {
