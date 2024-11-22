@@ -1,11 +1,15 @@
 package com.example.demo.src.user.service;
 
 import com.example.demo.config.BaseException;
+import com.example.demo.config.BaseResponseStatus;
+import com.example.demo.src.user.dto.LoginDto;
 import com.example.demo.src.user.dto.SignUpDto;
 import com.example.demo.src.user.entity.UserEntity;
 import com.example.demo.src.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -20,4 +24,18 @@ public class UserService {
 
         userRepository.save(user);
     }
+
+    public String login(LoginDto loginDto) throws BaseException {
+        Optional<UserEntity> user = userRepository.findUserEntityByUsernameAndPassword(
+                loginDto.getUsername(), loginDto.getPassword());
+
+        if (user.isPresent()) {
+
+            return "로그인 성공!";
+        } else {
+            throw new BaseException(BaseResponseStatus.INVALID_CREDENTIALS);
+        }
+    }
+
+
 }
