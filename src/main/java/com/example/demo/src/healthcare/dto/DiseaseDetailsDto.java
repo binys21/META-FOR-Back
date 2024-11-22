@@ -1,4 +1,5 @@
 package com.example.demo.src.healthcare.dto;
+import com.example.demo.src.healthcare.entity.DiseaseEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,7 +16,13 @@ import java.util.Map;
 
 public class DiseaseDetailsDto {
     private String diseaseName;
-    private String caution;
+    private String caustion;
     private String improvement;
     private String symptom;
+
+    public DiseaseDetailsDto(DiseaseEntity diseaseEntity) {
+        this.diseaseName = diseaseEntity.getDiseaseName();
+        this.caustion = diseaseEntity.getCaustion();
+        this.improvement = diseaseEntity.getImprovement();
+    }
 }
