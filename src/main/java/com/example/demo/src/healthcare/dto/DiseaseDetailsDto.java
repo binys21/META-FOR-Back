@@ -15,13 +15,15 @@ import java.util.Map;
 @NoArgsConstructor
 
 public class DiseaseDetailsDto {
-    private String diseaseName;
-    private String caustion;
+
+    private String diseaseName;  // 질병 이름
+    private String symptomName; // 관련 증상 이름
+    private String caustion;    // 주의사항
     private String improvement;
-    private String symptom;
 
     public DiseaseDetailsDto(DiseaseEntity diseaseEntity) {
         this.diseaseName = diseaseEntity.getDiseaseName();
+        this.symptomName = diseaseEntity.getSymptomEntity().getSymptomName();
         this.caustion = diseaseEntity.getCaustion();
         this.improvement = diseaseEntity.getImprovement();
     }

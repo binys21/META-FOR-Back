@@ -41,6 +41,12 @@ public class HealthcareService {
         }
         throw new BaseException(BaseResponseStatus.SEARCH_NOT_FOUND);
     }
+    public DiseaseDetailsDto getDiseaseDetails(String diseaseName) throws BaseException {
+        DiseaseEntity diseaseEntity = diseaseRepository.findByDiseaseName(diseaseName)
+                .orElseThrow(() -> new BaseException(BaseResponseStatus.SEARCH_NOT_FOUND));
+
+        return new DiseaseDetailsDto(diseaseEntity);
+    }
 
 
 }
