@@ -8,17 +8,14 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 
-
-public class LoginDto {
-    @NotBlank(message = "아이디(이메일)를 입력하세요.")
+public class IsLoginDto {
     private String username;
+    private Boolean isLogin;
 
-    @NotBlank(message = "비밀번호를 입력하세요.")
-    private String password;
-
-
-
+    public IsLoginDto(String username, Boolean isLogin){
+        this.username = username;
+        this.isLogin = isLogin;
+    }
 }

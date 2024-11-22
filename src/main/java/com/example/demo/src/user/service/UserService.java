@@ -3,6 +3,7 @@ package com.example.demo.src.user.service;
 import com.example.demo.config.BaseException;
 import com.example.demo.config.BaseResponseStatus;
 import com.example.demo.src.user.dto.LoginDto;
+import com.example.demo.src.user.dto.IsLoginDto;
 import com.example.demo.src.user.dto.SignUpDto;
 import com.example.demo.src.user.entity.UserEntity;
 import com.example.demo.src.user.repository.UserRepository;
@@ -25,15 +26,15 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public String login(LoginDto loginDto) throws BaseException {
+    public IsLoginDto login(LoginDto loginDto) throws BaseException {
         Optional<UserEntity> user = userRepository.findUserEntityByUsernameAndPassword(
                 loginDto.getUsername(), loginDto.getPassword());
 
         if (user.isPresent()) {
 
-            return "로그인 성공!";
+            return new IsLoginDto(loginDto.getUsername(), true);
         } else {
-            throw new BaseException(BaseResponseStatus.INVALID_CREDENTIALS);
+            return new IsLoginDto(loginDto.getUsername(), false);
         }
     }
 

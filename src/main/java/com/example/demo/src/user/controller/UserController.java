@@ -2,6 +2,7 @@ package com.example.demo.src.user.controller;
 
 import com.example.demo.config.BaseException;
 import com.example.demo.config.BaseResponse;
+import com.example.demo.src.user.dto.IsLoginDto;
 import com.example.demo.src.user.dto.LoginDto;
 import com.example.demo.src.user.dto.SignUpDto;
 import com.example.demo.src.user.service.UserService;
@@ -41,10 +42,10 @@ public class UserController {
             @ApiResponse(responseCode = "200", description = "성공"),
             @ApiResponse(responseCode = "401", description = "아이디나 비밀번호가 올바르지 않음")
     })
-    public BaseResponse<String> login(@RequestBody @Valid LoginDto loginDto) {
+    public BaseResponse<IsLoginDto> login(@RequestBody @Valid LoginDto loginDto) {
         try {
-            String result = userService.login(loginDto);
-            return new BaseResponse<>(result);
+            IsLoginDto isLoginDto = userService.login(loginDto);
+            return new BaseResponse<>(isLoginDto);
         } catch (BaseException e) {
             return new BaseResponse<>(e.getStatus());
         }
