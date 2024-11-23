@@ -10,8 +10,6 @@ import com.example.demo.src.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @RequiredArgsConstructor
 @Service
 public class UserService {
@@ -25,18 +23,4 @@ public class UserService {
 
         userRepository.save(user);
     }
-
-    public IsLoginDto login(LoginDto loginDto) throws BaseException {
-        Optional<UserEntity> user = userRepository.findUserEntityByUsernameAndPassword(
-                loginDto.getUsername(), loginDto.getPassword());
-
-        if (user.isPresent()) {
-
-            return new IsLoginDto(loginDto.getUsername(), true);
-        } else {
-            return new IsLoginDto(loginDto.getUsername(), false);
-        }
-    }
-
-
 }

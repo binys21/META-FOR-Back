@@ -27,9 +27,7 @@ public class UserController {
     })
     public BaseResponse<String> signUp(@RequestBody @Valid SignUpDto signUpDto){
         try{
-            System.out.print("1");
             userService.signUp(signUpDto);
-            System.out.print("4");
 
             return new BaseResponse<>("회원 가입 성공!");
 

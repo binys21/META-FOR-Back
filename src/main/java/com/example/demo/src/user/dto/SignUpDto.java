@@ -13,14 +13,17 @@ import lombok.*;
 @NoArgsConstructor
 public class SignUpDto {
 
-    @Schema(description = "아이디", nullable = true, example = "cos123@naver.com")
+    @Schema(description = "아이디", nullable = false, example = "cos123@naver.com")
     @NotBlank(message = "아이디를 입력해주세요")
     @Size
     private String username;
 
-    @Schema(description = "비밀번호", nullable = true, example = "sndlmdl!")
+    @Schema(description = "비밀번호", nullable = false, example = "sndlmdl!")
     @NotBlank(message = "비밀번호를 입력해주세요")
     //@Size(min = 4, max = 12, message = "비밀번호는 4자에서 12자 사이여야 합니다.")
     private String password;
 
+    @Schema(description = "비밀번호 확인", nullable = false, example = "sndlmdl!")
+    @NotBlank(message = "비밀번호를 한 번더 입력해주세요")
+    private String confirmedPassword;
 }
