@@ -7,6 +7,7 @@ import com.example.demo.src.healthcare.service.HealthcareService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +18,7 @@ public class healthcareController {
 
     private final HealthcareService healthcareService;
 
+    @CrossOrigin
     @GetMapping("/search")
     public BaseResponse<Object> search(@RequestParam String keyword) {
         try {
@@ -26,6 +28,7 @@ public class healthcareController {
             return new BaseResponse<>(e.getMessage());
         }
     }
+    @CrossOrigin
     @GetMapping("/disease/details")
     @Operation(summary = "질병 상세 정보 조회", description = "질병 이름을 통해 상세 정보 조회", responses = {
             @ApiResponse(responseCode = "200", description = "성공"),
